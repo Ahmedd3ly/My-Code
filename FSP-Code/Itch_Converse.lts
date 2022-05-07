@@ -1,0 +1,4 @@
+ITCH = (itch -> STOP).
+CONVERSE = (think -> talk -> listen -> CONVERSE
+			| stop -> STOP).
+||ITCH_CONVERSE = (ITCH || CONVERSE).

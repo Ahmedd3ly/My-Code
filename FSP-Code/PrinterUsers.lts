@@ -1,0 +1,8 @@
+CLIENT = (call -> wait -> continue -> CLIENT).
+SERVER = (recieve -> fetch -> reply -> SERVER).
+||CLI_VER = (CLIENT || SERVER) /{call/recieve, wait/reply}.
+
+USER = (acquire -> use -> release -> USER).
+PRINTER = (acquire -> print -> release -> PRINTER).
+||PRINTER_USERS = (a:USER || b:USER || {a,b}::PRINTER)
+/{a.print/a.use, b.print/b.use}.

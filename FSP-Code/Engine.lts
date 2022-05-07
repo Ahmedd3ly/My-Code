@@ -1,0 +1,4 @@
+Engine = Off,
+Off = (engineOn -> Go),
+Go = (setSpeed -> CheckSpeed | engineOff -> Engine),
+CheckSpeed = (speedUp -> CheckSpeed | speedDown -> Go).

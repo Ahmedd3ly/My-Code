@@ -1,0 +1,1 @@
+Coin = (toss -> head -> Coin | toss -> tail -> Coin).

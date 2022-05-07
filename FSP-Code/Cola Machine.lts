@@ -1,0 +1,7 @@
+const N =15
+range T = 0..N
+ColaMachine = (start -> CHECKCOIN),
+CHECKCOIN[i:T] = (when i==10 notEnough -> 
+CHECKCOIN[i+10] | when i==5 notEnough ->
+CHECKCOIN[i+5]  | when i==20 returnChange -> 
+CHECKCOIN[i-5]  | when i==15 giveCoke -> ColaMachine),
