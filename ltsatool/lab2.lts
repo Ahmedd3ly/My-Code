@@ -1,0 +1,20 @@
+const Empty = 0
+const Reserved = 1
+SEAT = Emptystate ,
+Emptystate = ( reserve -> Reservestate | query[Empty] -> Emptystate ) ,
+Reservestate = ( reserve -> ERROR) | query[Reserved] -> Reservestate ) .
+
+
+
+range IDs = 0..1
+||SEATS = ( seat[IDs]:SEAT ) .
+
+
+
+TERMINAL = 
+( choice[x:IDs] -> Select[x] ) ,
+Select[x:IDs] = ( seat[x].query[j:0..1] -> ( when j == 0 seat[x].reserve -> TERMINAL | when j == 1 return -> TERMINAL ) ) .
+
+
+
+||TERMINALS = ( (a,b):TERMINAL || (a,b)::SEATS ) .
