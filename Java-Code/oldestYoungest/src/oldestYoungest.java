@@ -1,3 +1,6 @@
+/* get 5 names and ages, print them and get
+ * the oldest and the youngest of them.
+ */
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -5,10 +8,9 @@ public class oldestYoungest {
 	public final int ARRAY_LENGTH = 5;
 	private int[] age = new int[ARRAY_LENGTH];
 	private String[] name = new String[ARRAY_LENGTH];
-
+	// let the oldest and youngest be the first person.
 	private int oldest = age[0];
 	private int youngest = age[0];
-	private int counter = 0;
 
 	private Scanner in = new Scanner(System.in);
 
@@ -18,11 +20,10 @@ public class oldestYoungest {
 				System.out.println("Your name: ");
 				name[i] = in.next();
 				if (name[i].equalsIgnoreCase("done")) {
-					getOldYoung();
+					getOldYoung(i);
 				}else {
 					System.out.println("Your age: ");
 					age[i] = in.nextInt();
-					counter++;
 				}	
 				
 			} catch (InputMismatchException e) {
@@ -31,20 +32,23 @@ public class oldestYoungest {
 				getNameAge();
 			}
 		}
-			getOldYoung();
+			getOldYoung(ARRAY_LENGTH);
 	}	
-	private void getOldYoung() {
-		for (int j = 0; j<counter; j++) {
-			if (youngest > age[j]) {
-				youngest = j;
-			}else if (oldest < age[j]) {
-				oldest = j;
+	private void getOldYoung(int counter) {
+		int y = 0, o=0;
+		for (int j=0; j<counter; j++) {
+			if (oldest < age[j]) {
+				oldest = age[j];
+				o = j;// get the index of the youngest
+			}else if (youngest > age[j]) {
+				youngest = age[j];
+				y = j;// get the index of the oldest
 			}
 			System.out.println(
-					"The " + j + " name in the list is " + name[j] + " and their age is: " + age[j]);
+					"Name " + j + " is " + name[j] + " and has " + age[j] + " years old.");
 		}
-			System.out.println("The youngest one is " + name[youngest]);
-			System.out.println("The oldest one is " + name[oldest]);
+			System.out.println("The oldest is " + name[o]);	
+			System.out.println("The youngest is " + name[y]);
 	}	
 
 	public static void main(String[] args) {
