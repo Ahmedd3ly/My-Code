@@ -39,10 +39,10 @@ public class oldestYoungest {
 		for (int j=0; j<counter; j++) {
 			if (oldest < age[j]) {
 				oldest = age[j];
-				o = j;// get the index of the youngest
+				o = j; // get the index of the oldest
 			}else if (youngest > age[j]) {
 				youngest = age[j];
-				y = j;// get the index of the oldest
+				y = j; // get the index of the youngest
 			}
 			System.out.println(
 					"Name " + j + " is " + name[j] + " and has " + age[j] + " years old.");
