@@ -1,0 +1,14 @@
+const N = 2
+range T = 0..N
+
+MEMORY	= MEMORY[0],
+MEMORY[t:T]	= (read[t] -> MEMORY[t]
+		|write[v:T] -> MEMORY[v])/{reset/write[0]}.
+
+range V = 0..N-1
+TURNSTILE = (go -> reset -> RUN),
+RUN = (arrive -> INCREMENT),
+INCREMENT = (read[v:V] -> write[v+1] -> RUN |
+			 read[N] -> TURNSTILE).
+
+||GARDEN = (east:TURNSTILE || west:TURNSTILE || {east, west}::MEMORY).

@@ -1,0 +1,27 @@
+const N = 2
+const A = N+1
+range T = 0..N
+range D = 0..A
+
+MEMORY	= MEMORY[0],
+MEMORY[t:T]	= (read[t] -> MEMORY[t]
+		|write[v:T] -> MEMORY[v]).
+
+LOCK = (acquire -> release -> LOCK).
+
+||LOCKMEM = (LOCK || MEMORY).
+
+range V = 0..N-1
+TURNSTILE = (go -> reset -> RUN),
+RUN = (return -> TURNSTILE | acquire -> CRITICAL),
+CRITICAL = (arrive -> INCREMENT | release -> RUN),
+INCREMENT = (read[v:V] -> write[v+1] -> CRITICAL |
+			 read[N] -> CRITICAL).
+
+||GARDEN = (east:TURNSTILE || west:TURNSTILE || {east, west}::LOCKMEM)
+			/{reset/{east, west}.write[0],
+			go/{east, west}.go}.
+
+TEST = TEST[0],
+TEST[v:D] = ({east, west}.write[u:1..N] -> TEST[v+1] | reset -> TEST[0] | when v > N wrong -> ERROR).
+||TESTGARDEN = (GARDEN || TEST).
