@@ -14,19 +14,16 @@ public class Garden {
 
 	public void go() throws InterruptedException {
 		counter = new Counter();
-
+		// create Turnstiles
 		west = new Turnstile(counter);
 		east = new Turnstile(counter);
-
+		// create threads
 		gateWest = new Thread(west);
 		gateEast = new Thread(east);
-
+		// start threads
 		gateWest.start();
-		System.out.println("Opened west gate.");
-
 		gateEast.start();
-		System.out.println("Opened east gate.");
-
+		// wait for threads to die
 		gateWest.join();
 		gateEast.join();
 	}
