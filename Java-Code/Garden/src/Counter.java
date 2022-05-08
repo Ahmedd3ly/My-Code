@@ -6,11 +6,18 @@ public class Counter {
 		return value;
 	}
 
-	public void increment() {
+	public synchronized void increment() {
 		value += 1;
 	}
 
-	public void decrement() {
+	public synchronized void decrement() {
 		value -= 1;
 	}
+	/*
+	public void increment(){
+        int temp = value; //read value
+        Simulate.HWInterrupt();
+        value = temp + 1; // set value
+    }
+    */
 }

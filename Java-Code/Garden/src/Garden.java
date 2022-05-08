@@ -8,9 +8,12 @@ public class Garden {
 	Thread gateWest;
 	Thread gateEast;
 
-	public int getCount() {
-		return counter.getValue();
-	}
+	public int getCount(){
+        if (counter!=null)
+            return counter.getValue();
+        else
+            return 0;
+    }
 
 	public void go() throws InterruptedException {
 		counter = new Counter();
@@ -18,8 +21,8 @@ public class Garden {
 		west = new Turnstile(counter);
 		east = new Turnstile(counter);
 		// create threads
-		gateWest = new Thread(west);
-		gateEast = new Thread(east);
+		gateWest = new Thread(west, "west");
+		gateEast = new Thread(east, "east");
 		// start threads
 		gateWest.start();
 		gateEast.start();
@@ -38,6 +41,7 @@ public class Garden {
 		while (counter.getValue() > 0) {
 			leave();
 		}
+		System.out.println("Everyone has left the garden.");
 	}
 
 	private void leave() {
@@ -45,7 +49,6 @@ public class Garden {
 			double random = Math.random();
 			Thread.sleep((long) (random * random));
 			counter.decrement();
-			System.out.println(counter.getValue() + " is leaving.");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

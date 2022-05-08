@@ -5,10 +5,8 @@ public class Application {
 		garden.go(); // run the garden
 		Thread.sleep(1000); // sleep for one second 
 		// count at the end
-		System.out.println("Total inside: " + garden.getCount());
+		System.out.println("People count at closing -> " + garden.getCount());
 		garden.stop();// stop the garden
 		Thread.sleep(1000);// sleep for one second 
-		// check everyone has left
-		System.out.println("Total inside: " + garden.getCount());
 	}
 }
