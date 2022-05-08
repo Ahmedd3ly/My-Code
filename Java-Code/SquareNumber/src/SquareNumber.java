@@ -15,7 +15,7 @@ public class SquareNumber {
 	    		 getNumber();
 	    	 }
 	      }catch (InputMismatchException e) {
-	     	 System.out.println("ايه اللي انت كاتبه ده يعرص");
+	     	 System.out.println("Invalid input! Try again.");
 	     	 in.next();
 	     	 getNumber();
 	    }
