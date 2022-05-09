@@ -1,0 +1,15 @@
+Entrance = (enter -> Entrance).
+Exit = (leave -> Exit).
+const N = 4
+Controller (Capacity=N) = SpaceLeft[Capacity],
+SpaceLeft[i:0..Capacity] =
+(when i>0 enter -> SpaceLeft[i-1] 
+|when i<Capacity leave -> SpaceLeft[i+1]).
+
+||CarPark = (Entrance || Exit || Controller).
+
+property TotalCars = CarCount[0],
+CarCount[i:0..N] =
+(leave -> CarCount[i-1] | enter -> CarCount[i+1]).
+
+||TestCarPark = (TotalCars || CarPark).
