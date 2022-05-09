@@ -1,0 +1,19 @@
+Fork = (pickup -> putdown -> Fork).
+
+Phil = (satdown -> right.pickup -> left.pickup -> eat -> right.putdown -> left.putdown -> standup -> Phil).
+
+||ThreePhils = ({a,b,c}:Phil).
+
+||Fork1 = ({a.right,b.left}::Fork).
+||Fork2 = ({b.right,c.left}::Fork).
+||Fork3 = ({c.right,a.left}::Fork).
+
+||Table = (ThreePhils || Fork1 || Fork2 || Fork3).
+
+const N=3
+set Names = {a,b,c}
+Butler(Capacity=2) = ChairFull[0],
+Chairfull[i:0..Capacity] = (when i<Capacity Names.sit -> Chairfull[i+1]
+| when i>0 Names.stand -> Chairfull[i-1]).
+
+||ButlerTable = (Butler || Table).

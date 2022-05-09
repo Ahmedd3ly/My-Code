@@ -1,0 +1,11 @@
+Fork = (pickup -> putdown -> Fork).
+
+Phil = (satdown -> right.pickup -> left.pickup -> eat -> right.putdown -> left.putdown -> standup -> Phil).
+
+||ThreePhils = ({a,b,c}:Phil).
+
+||Fork1 = ({a.right,b.left}::Fork).
+||Fork2 = ({b.right,c.left}::Fork).
+||Fork3 = ({c.right,a.left}::Fork).
+
+||Table = (ThreePhils || Fork1 || Fork2 || Fork3).
