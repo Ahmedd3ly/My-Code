@@ -2,7 +2,7 @@
 public class Entrance implements Runnable {
 	private Controller controller;
 	private String name;
-	private int sleepScaler = 1000;
+	private int sleepScaler = 10;
 	
 	public Entrance(Controller controller, String name) {
 		this.controller = controller;

@@ -2,7 +2,7 @@
 public class Exit implements Runnable{
 	private Controller controller;
 	private String name;
-	private int sleepScaler = 1000;
+	private int sleepScaler = 10;
 	
 	public Exit (Controller controller, String name) {
 		this.controller = controller;
