@@ -49,6 +49,7 @@ public class Garden {
 			double random = Math.random();
 			Thread.sleep((long) (random * random));
 			counter.decrement();
+			System.out.println(this.getCount() + " is leaving the garden.");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
