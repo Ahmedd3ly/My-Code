@@ -1,11 +1,9 @@
-
+// passive (monitor) class
 public class Controller {
-	private Parking parking;
 	private int capacity;
 	private int carCount;
 
-	public Controller(Parking parking, int capacity) {
-		this.parking = parking;
+	public Controller(int capacity) {
 		this.capacity = capacity;
 	}
 

@@ -1,4 +1,4 @@
-
+// active class 
 public class Exit implements Runnable{
 	private Controller controller;
 	private String name;
@@ -18,7 +18,7 @@ public class Exit implements Runnable{
 				int tmp = controller.getCarCount();
 				controller.leave();
 				int current = controller.getCarCount();
-				System.out.println("Departed: " + (tmp-current));
+				System.out.println(name + ": " + (tmp-current));
 			} catch (InterruptedException ex) {
 				System.out.println("Interrupted Departure Thread");
 				return;

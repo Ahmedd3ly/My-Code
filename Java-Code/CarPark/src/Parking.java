@@ -1,4 +1,4 @@
-
+// controller class
 public class Parking {
 	private String name;
 	private Entrance entrance;
@@ -15,10 +15,10 @@ public class Parking {
 	}
 
 	public void start() {
-		controller = new Controller(this, this.capacity);
+		controller = new Controller(this.capacity);
 		// create entrance and exit
-		this.entrance = new Entrance(controller, name);
-		this.exit = new Exit(controller, name);
+		this.entrance = new Entrance(controller, "In");
+		this.exit = new Exit(controller, "Out");
 		
 		this.open();
 	}

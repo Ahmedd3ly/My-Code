@@ -1,4 +1,4 @@
-
+// active class
 public class Entrance implements Runnable {
 	private Controller controller;
 	private String name;
@@ -18,7 +18,7 @@ public class Entrance implements Runnable {
 				int tmp = controller.getCarCount();
 				controller.enter();
 				int current = controller.getCarCount();
-				System.out.println("Arrived: " + (current-tmp));
+				System.out.println(name + ": " + (current-tmp));
 			} catch (InterruptedException ex) {
 				System.out.println("Interrupted Arrival Thread");
 				return;
